@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Request from 'superagent';
 import jQuery from 'jquery';
 import DataTable from 'datatables.net';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 require('datatables.net-bs');
 
 var GameList = React.createClass({
@@ -38,7 +38,25 @@ var GameList = React.createClass({
       if(d.name === null)
         d.name = "Game " + d.id;
 
-      return <tr key={d.id}><td>{d.name}</td><td>{d.played_at}</td><td></td></tr>
+      return (
+        <tr key={d.id}>
+          <td>
+            <Button bsStyle={d.winner == 'Red' ? "danger" : "success"} href="#" block>{d.name}</Button>
+          </td>
+          <td>
+            {d.played_at}
+          </td>
+          <td>
+            {d.green_score}
+          </td>
+          <td>
+            {d.red_score}
+          </td>
+          <td>
+            {d.links.pdf}
+          </td>
+        </tr>
+      );
     });
 
     return (
@@ -47,6 +65,8 @@ var GameList = React.createClass({
           <tr>
             <th>Game</th>
             <th>Date</th>
+            <th>Green Score</th>
+            <th>Red Score</th>
             <th>PDF</th>
           </tr>
         </thead>
