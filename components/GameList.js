@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Request from 'superagent';
 import jQuery from 'jquery';
 import DataTable from 'datatables.net';
+import { Table } from 'react-bootstrap';
+require('datatables.net-bs');
 
 var GameList = React.createClass({
   getInitialState: function () {
@@ -33,23 +35,25 @@ var GameList = React.createClass({
   },
   render: function () {
     var table = this.state.data.map(function (d, index) {
-      return <tr key={d.id}><td>{d.id}</td><td>{d.played_at}</td></tr>
+      if(d.name === null)
+        d.name = "Game " + d.id;
+
+      return <tr key={d.id}><td>{d.name}</td><td>{d.played_at}</td><td></td></tr>
     });
 
     return (
-      <div className="table-responsive">
-      <table className="table table-striped table-bordered table-hover table-condensed" id="game_list">
+      <Table striped bordered hover condensed responsive id="game_list">
         <thead>
           <tr>
-            <th>id</th>
-            <th>played_at</th>
+            <th>Game</th>
+            <th>Date</th>
+            <th>PDF</th>
           </tr>
         </thead>
         <tbody>
           {table}
         </tbody>
-      </table>
-      </div>
+      </Table>
     );
   }
 });

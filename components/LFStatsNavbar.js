@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 
 var LFStatsNavbar = React.createClass({
-  render: function () {
+  render () {
     return (
       <Navbar fixedTop={true} fluid={true}>
         <Navbar.Header>
@@ -27,6 +27,6 @@ var LFStatsNavbar = React.createClass({
       </Navbar>
     );
   }
-});
+})
 
 export default LFStatsNavbar;

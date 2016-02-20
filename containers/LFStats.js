@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { PropTypes } from 'react'
 import LFStatsNavbar from '../components/LFStatsNavbar';
-import GameList from '../components/GameList';
+import GameListContainer from '../components/GameListContainer';
 
 var LFStatsApp = React.createClass({
-  render: function () {
+  render () {
     return (
       <div>
         <LFStatsNavbar />
-        <GameList />
+        <GameListContainer />
       </div>
-    );
+    )
   }
-});
+})
 
 export default LFStatsApp;
