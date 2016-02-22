@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import FacebookLogin from './FacebookLogin'
 
 var LFStatsNavbar = React.createClass({
   render () {
@@ -23,6 +24,7 @@ var LFStatsNavbar = React.createClass({
             <NavItem>About SM5</NavItem>
             <NavItem>Twitch</NavItem>
           </Nav>
+          <Nav pullRight><FacebookLogin fb={FB} /></Nav>
         </Navbar.Collapse>
       </Navbar>
     );
