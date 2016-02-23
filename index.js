@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import LFStats from './containers/LFStats';
 import AboutContainer from './containers/AboutContainer';
 import AllCenterTeamContainer from './containers/AllCenterTeamContainer';
@@ -13,7 +13,7 @@ import PlayerContainer from './containers/PlayerContainer';
 import TwitchContainer from './containers/TwitchContainer';
 
 ReactDOM.render((
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path="/" component={LFStats}>
       <Route path="/about" component={AboutContainer} />
       <Route path="/allcenter" component={AllCenterTeamContainer} />
