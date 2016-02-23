@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 import { Panel } from 'react-bootstrap'
-import GameList from './GameList'
+import GameList from '../components/GameList'
 
-const GameListContainer = React.createClass({
+const GameContainer = React.createClass({
   render () {
     return (
       <Panel header="Game List" bsStyle="info">
@@ -12,4 +12,4 @@ const GameListContainer = React.createClass({
   }
 })
 
-export default GameListContainer
+export default GameContainer
