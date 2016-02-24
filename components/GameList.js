@@ -1,25 +1,10 @@
 import React, { PropTypes } from 'react';
-import Request from 'superagent';
 import jQuery from 'jquery';
 import DataTable from 'datatables.net';
 import { Table, Button } from 'react-bootstrap';
 require('datatables.net-bs');
 
 var GameList = React.createClass({
-  getInitialState: function () {
-    return {
-      data: []
-    };
-  },
-  componentWillMount: function () {
-    this.serverRequest = Request
-      .get('http://lfstats.app/api/games/')
-      .end(function(err, res) {
-        this.setState({
-          data: res.body.data
-        });
-      }.bind(this));
-  },
   componentDidMount: function() {
     jQuery('#game_list').DataTable();
   },
@@ -30,11 +15,8 @@ var GameList = React.createClass({
   componentDidUpdate: function() {
     jQuery('#game_list').DataTable();
   },
-  componentWillUnmount: function () {
-    this.serverRequest.abort();
-  },
   render: function () {
-    var table = this.state.data.map(function (d, index) {
+    var table = this.props.list.map(function (d, index) {
       if(d.name === null)
         d.name = "Game " + d.id;
 
