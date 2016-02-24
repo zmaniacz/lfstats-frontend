@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import jQuery from 'jquery';
 import DataTable from 'datatables.net';
 import { Table, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 require('datatables.net-bs');
 
 var GameList = React.createClass({
@@ -22,21 +23,11 @@ var GameList = React.createClass({
 
       return (
         <tr key={d.id}>
-          <td>
-            <Button bsStyle={d.winner == 'Red' ? "danger" : "success"} href="#" block>{d.name}</Button>
-          </td>
-          <td>
-            {d.played_at}
-          </td>
-          <td>
-            {d.green_score}
-          </td>
-          <td>
-            {d.red_score}
-          </td>
-          <td>
-            {d.links.pdf}
-          </td>
+          <td><LinkContainer to={{ pathname: '/games/'+d.id }}><Button bsStyle={d.winner == 'Red' ? "danger" : "success"} block>{d.name}</Button></LinkContainer></td>
+          <td>{d.played_at}</td>
+          <td>{d.green_score}</td>
+          <td>{d.red_score}</td>
+          <td>{d.links.pdf}</td>
         </tr>
       );
     });

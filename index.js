@@ -5,7 +5,6 @@ import LFStats from './containers/LFStats';
 import AboutContainer from './containers/AboutContainer';
 import AllCenterTeamContainer from './containers/AllCenterTeamContainer';
 import CenterContainer from './containers/CenterContainer';
-import GameListContainer from './containers/GameListContainer';
 import GameContainer from './containers/GameContainer';
 import LeaderBoardContainer from './containers/LeaderBoardContainer';
 import NightlyStatContainer from './containers/NightlyStatContainer';
@@ -19,7 +18,7 @@ ReactDOM.render((
       <Route path="/about" component={AboutContainer} />
       <Route path="/allcenter" component={AllCenterTeamContainer} />
       <Route path="/centers" component={CenterContainer} />
-      <Route path="/games" component={GameListContainer}>
+      <Route path="/games" component={GameContainer}>
         <Route path="/games/:gameId" component={GameContainer} />
       </Route>
       <Route path="/leaderboards" component={LeaderBoardContainer} />

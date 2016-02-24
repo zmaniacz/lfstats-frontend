@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react'
-import GameView from '../components/GameView'
+import GameListContainer from './GameListContainer'
+import GameViewContainer from './GameViewContainer'
 
 const GameContainer = React.createClass({
   render () {
     return (
-      <GameView />
+      this.props.params.gameId ? <GameViewContainer gameId={this.props.params.gameId} /> : <GameListContainer />
     )
   }
 })
