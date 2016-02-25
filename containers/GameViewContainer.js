@@ -1,15 +1,16 @@
 import React, { PropTypes } from 'react'
 import Request from 'superagent';
+import { Glyphicon } from 'react-bootstrap'
 import GameView from '../components/GameView'
 
 const GameViewContainer = React.createClass({
   getInitialState: function () {
     return {
-      data: [],
+      data: {},
       loaded: false
     };
   },
-  componentWillMount: function () {
+  componentDidMount: function () {
     this.serverRequest = Request
       .get('http://lfstats.app/api/games/'+this.props.gameId+'?include=teams.scorecards')
       .end(function(err, res) {
@@ -23,8 +24,15 @@ const GameViewContainer = React.createClass({
     this.serverRequest.abort();
   },
   render () {
+    if(this.state.loaded) {
+      var response = <GameView game={this.state.data} />
+    }
+    else {
+      var response = <Glyphicon glyph="refresh glyphicon-refresh-animate" />;
+    }
+
     return (
-      <GameView game={this.state.data} />
+      <div>{response}</div>
     )
   }
 })

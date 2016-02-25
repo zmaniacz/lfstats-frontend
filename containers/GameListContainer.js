@@ -10,7 +10,7 @@ const GameListContainer = React.createClass({
       loaded: false
     };
   },
-  componentWillMount: function () {
+  componentDidMount: function () {
     this.serverRequest = Request
       .get('http://lfstats.app/api/games/')
       .end(function(err, res) {
