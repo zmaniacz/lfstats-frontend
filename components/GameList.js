@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import jQuery from 'jquery';
 import DataTable from 'datatables.net';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button, Panel } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 require('datatables.net-bs');
 
@@ -17,7 +17,7 @@ var GameList = React.createClass({
     jQuery('#game_list').DataTable();
   },
   render: function () {
-    var table = this.props.list.map(function (d, index) {
+    var table = this.props.games.map(function (d, index) {
       if(d.name === null)
         d.name = "Game " + d.id;
 
@@ -27,26 +27,28 @@ var GameList = React.createClass({
           <td>{d.played_at}</td>
           <td>{d.green_score}</td>
           <td>{d.red_score}</td>
-          <td>{d.links.pdf}</td>
+          <td>{d.pdf}</td>
         </tr>
       );
     });
 
     return (
-      <Table striped bordered hover condensed responsive id="game_list">
-        <thead>
-          <tr>
-            <th>Game</th>
-            <th>Date</th>
-            <th>Green Score</th>
-            <th>Red Score</th>
-            <th>PDF</th>
-          </tr>
-        </thead>
-        <tbody>
-          {table}
-        </tbody>
-      </Table>
+      <Panel header="Game List" bsStyle="info">
+        <Table striped bordered hover condensed responsive id="game_list">
+          <thead>
+            <tr>
+              <th>Game</th>
+              <th>Date</th>
+              <th>Green Score</th>
+              <th>Red Score</th>
+              <th>PDF</th>
+            </tr>
+          </thead>
+          <tbody>
+            {table}
+          </tbody>
+        </Table>
+      </Panel>
     );
   }
 });

@@ -1,44 +1,35 @@
 import React, { PropTypes } from 'react'
-import { Panel, Glyphicon } from 'react-bootstrap'
-import Request from 'superagent';
+import { connect } from 'react-redux'
+import {fetchGameListIfNeeded} from '../actions'
 import GameList from '../components/GameList'
 
 const GameListContainer = React.createClass({
-  getInitialState: function () {
-    return {
-      data: [],
-      loaded: false
-    };
-  },
-  componentDidMount: function () {
-    this.serverRequest = Request
-      .get('http://lfstats.app/api/games/')
-      .end(function(err, res) {
-        this.setState({
-          data: res.body.data,
-          loaded: true
-        });
-      }.bind(this));
-  },
-  componentWillUnmount: function () {
-    this.serverRequest.abort();
+  componentDidMount() {
+    const { dispatch, fetchGameList } = this.props
+    dispatch(fetchGameListIfNeeded())
   },
   render () {
-    if(this.state.loaded) {
-      var header = "Game List";
-      var response = <GameList list={this.state.data} />;
+    if(this.props.isFetching || this.props.games.length === 0) {
+      var output = <h1>Loading...</h1>
+    } else {
+      var output = <GameList games={this.props.games} />
     }
-    else {
-      var header = <Glyphicon glyph="refresh glyphicon-refresh-animate" />;
-      var response = '';
-    }
-
     return (
-      <Panel header={header} bsStyle="info">
-        {response}
-      </Panel>
+      <div>
+        {output}
+      </div>
     )
   }
 })
 
 export default GameListContainer
+
+const mapStateToProps = (state) => {
+  const { gameList } = state
+  return {
+    isFetching: gameList.isFetching,
+    games: gameList.games
+  }
+}
+
+export default connect(mapStateToProps)(GameListContainer)
