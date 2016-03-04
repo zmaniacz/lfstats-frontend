@@ -50,6 +50,35 @@ export function fetchCenterList() {
   }
 }
 
+export const REQUEST_EVENT_LIST = 'REQUEST_EVENT_LIST'
+export const RECEIVE_EVENT_LIST = 'RECEIVE_EVENT_LIST'
+
+function requestEventList() {
+  return {
+    type: REQUEST_EVENT_LIST
+  }
+}
+
+function receiveEventList(json) {
+  return {
+    type: RECEIVE_EVENT_LIST,
+    payload: {
+      events: json.data,
+      receivedAt: Date.now()
+    }
+  }
+}
+
+export function fetchEventList() {
+  return function(dispatch) {
+    dispatch(requestEventList())
+    return Request.get('http://lfstats.app/api/events')
+      .end(function (error, response) {
+        dispatch(receiveEventList(response.body))
+      })
+  }
+}
+
 export const REQUEST_GAME_LIST = 'REQUEST_GAME_LIST'
 export const RECEIVE_GAME_LIST = 'RECEIVE_GAME_LIST'
 

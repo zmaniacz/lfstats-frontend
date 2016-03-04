@@ -6,7 +6,7 @@ import SideBarContainer from './SideBarContainer'
 var LFStatsApp = React.createClass({
   render () {
     return (
-      <Grid>
+      <Grid fluid={true}>
         <Row>
           <Col xs={12}>
             <LFStatsNavbar />
@@ -20,7 +20,6 @@ var LFStatsApp = React.createClass({
             {this.props.children}
           </Col>
         </Row>
-
       </Grid>
     )
   }
