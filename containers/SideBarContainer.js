@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchCenterList, fetchEventList } from '../actions'
-import SideBar from '../components/SideBar'
+import { fetchCenterList, fetchEventList, setCenterFilter, setEventFilter } from '../actions'
+import CenterSelect from '../components/CenterSelect'
+import EventSelect from '../components/EventSelect'
 
 const SideBarContainer = React.createClass({
   componentDidMount() {
@@ -9,9 +10,18 @@ const SideBarContainer = React.createClass({
     dispatch(fetchCenterList())
     dispatch(fetchEventList())
   },
+  handleCenterChange(center_id) {
+    this.props.dispatch(setCenterFilter(center_id))
+  },
+  handleEventChange(event_id) {
+    this.props.dispatch(setEventFilter(event_id))
+  },
   render () {
     return (
-      <SideBar centers={this.props.centerList.centers} events={this.props.eventList.events} />
+      <div>
+        <CenterSelect centers={this.props.centerList.centers} onChange={this.handleCenterChange} />
+        <EventSelect events={this.props.eventList.events} onChange={this.handleEventChange} />
+      </div>
     )
   }
 })
