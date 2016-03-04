@@ -1,7 +1,7 @@
 import * as ActionTypes from '../actions'
 
 const initialState = {
-  event_id: ActionTypes.SHOW_ALL
+  event_id: 0
 }
 
 function eventFilter(state = initialState, action) {

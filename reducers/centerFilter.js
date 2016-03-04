@@ -1,7 +1,7 @@
 import * as ActionTypes from '../actions'
 
 const initialState = {
-  center_id: ActionTypes.SHOW_ALL
+  center_id: 0
 }
 
 function centerFilter(state = initialState, action) {

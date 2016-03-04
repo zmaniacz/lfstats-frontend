@@ -2,7 +2,6 @@ import Request from 'superagent';
 
 export const SET_CENTER_FILTER = 'SET_CENTER_FILTER'
 export const SET_EVENT_FILTER = 'SET_EVENT_FILTER'
-export const SHOW_ALL = 'SHOW_ALL'
 
 export function setCenterFilter(id) {
   return {
@@ -19,6 +18,35 @@ export function setEventFilter(id) {
     payload: {
       event_id: id
     }
+  }
+}
+
+export const REQUEST_CENTER_LIST = 'REQUEST_CENTER_LIST'
+export const RECEIVE_CENTER_LIST = 'RECEIVE_CENTER_LIST'
+
+function requestCenterList() {
+  return {
+    type: REQUEST_CENTER_LIST
+  }
+}
+
+function receiveCenterList(json) {
+  return {
+    type: RECEIVE_CENTER_LIST,
+    payload: {
+      centers: json.data,
+      receivedAt: Date.now()
+    }
+  }
+}
+
+export function fetchCenterList() {
+  return function(dispatch) {
+    dispatch(requestCenterList())
+    return Request.get('http://lfstats.app/api/centers')
+      .end(function (error, response) {
+        dispatch(receiveCenterList(response.body))
+      })
   }
 }
 
@@ -44,7 +72,7 @@ function receiveGameList(json) {
 function fetchGameList() {
   return function(dispatch) {
     dispatch(requestGameList())
-    return Request.get('http://lfstats.app/api/games/')
+    return Request.get('http://lfstats.app/api/games/?include=event.center')
       .end(function(error, response) {
         dispatch(receiveGameList(response.body))
       })

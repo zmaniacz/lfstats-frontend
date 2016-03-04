@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap';
 import LFStatsNavbar from '../components/LFStatsNavbar';
+import SideBarContainer from './SideBarContainer'
 
 var LFStatsApp = React.createClass({
   render () {
@@ -13,7 +14,7 @@ var LFStatsApp = React.createClass({
         </Row>
         <Row>
           <Col xs={2}>
-            Sidebar
+            <SideBarContainer />
           </Col>
           <Col xs={10}>
             {this.props.children}
