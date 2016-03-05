@@ -1,28 +1,44 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchGameListIfNeeded } from '../actions'
+import * as ActionTypes from '../actions'
 import GameList from '../components/GameList'
 
 const GameListContainer = React.createClass({
   componentDidMount() {
     const { dispatch, fetchGameList } = this.props
-    dispatch(fetchGameListIfNeeded())
+    dispatch(ActionTypes.fetchGameListIfNeeded())
   },
   render () {
     if(this.props.isFetching || this.props.games.length === 0) {
       var output = <h1>Loading...</h1>
     } else {
-      const center_id = this.props.contextFilters.centerFilter.center_id
-      const event_id = this.props.contextFilters.eventFilter.event_id
+      const centerFilter = this.props.contextFilters.centerFilter.filter
+      const eventFilter = this.props.contextFilters.eventFilter.filter
 
-      if(center_id > 0 || event_id > 0) {
-        var filteredGames = this.props.games.filter((game) => {
-          return ((center_id > 0 ? game.event.data.center.data.id == center_id : true) && (event_id > 0 ? game.event.data.id == event_id : true))
+      var filteredGames = this.props.games
+
+      if(centerFilter != ActionTypes.SHOW_ALL) {
+        filteredGames = filteredGames.filter((game) => {
+          return (game.event.data.center.data.id == centerFilter)
         })
-        var output = <GameList games={filteredGames} />
-      } else {
-        var output = <GameList games={this.props.games} />
       }
+
+      if(eventFilter != ActionTypes.SHOW_ALL) {
+        filteredGames = filteredGames.filter((game) => {
+          switch (eventFilter) {
+            case ActionTypes.SHOW_LEAGUE_EVENTS:
+              return (game.event.data.type == 'league')
+            case ActionTypes.SHOW_SOCIAL_EVENTS:
+              return (game.event.data.type == 'social')
+            case ActionTypes.SHOW_TOURNAMENT_EVENTS:
+              return (game.event.data.type == 'tournament')
+            default:
+              return (game.event.data.id == eventFilter)
+          }
+        })
+      }
+
+      var output = <GameList games={filteredGames} />
     }
     return (
       <div>

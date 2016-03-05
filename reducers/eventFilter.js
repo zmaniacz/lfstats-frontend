@@ -1,14 +1,14 @@
 import * as ActionTypes from '../actions'
 
 const initialState = {
-  event_id: 0
+  filter: ActionTypes.SHOW_ALL
 }
 
 function eventFilter(state = initialState, action) {
   switch (action.type) {
     case ActionTypes.SET_EVENT_FILTER:
       return Object.assign({}, state, {
-        event_id: action.payload.event_id
+        filter: action.payload.filter
       })
     default:
         return state

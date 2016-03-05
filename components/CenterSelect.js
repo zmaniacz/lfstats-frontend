@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Input } from 'react-bootstrap'
+import { SHOW_ALL } from '../actions'
 
 const CenterSelect = React.createClass({
   render () {
@@ -13,7 +14,7 @@ const CenterSelect = React.createClass({
 
     return (
       <Input type="select" label="Center" placeholder="All" onChange={e => onChange(e.target.value)}>
-        <option value="0">All</option>
+        <option value={SHOW_ALL}>All</option>
         {options}
       </Input>
     )
