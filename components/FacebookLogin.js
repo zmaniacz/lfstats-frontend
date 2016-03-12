@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { setCurrentUser, clearCurrentUser } from '../actions'
 
 class FacebookLogin extends React.Component {
   constructor(props) {
@@ -30,6 +32,7 @@ class FacebookLogin extends React.Component {
         self.setState({
           message: message
         });
+        self.props.dispatch(setCurrentUser(response));
       });
 
       this.FB.api('/me/picture?width=25&height=25', function(response) {
@@ -44,6 +47,7 @@ class FacebookLogin extends React.Component {
     this.setState({
       message: ""
     });
+    this.props.dispatch(clearCurrentUser());
   }
 
   render () {
@@ -68,4 +72,11 @@ class FacebookLogin extends React.Component {
   }
 }
 
-export default FacebookLogin
+const mapStateToProps = (state) => {
+  const { user } = state
+  return {
+    user: user
+  }
+}
+
+export default connect(mapStateToProps)(FacebookLogin)
