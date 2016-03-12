@@ -1,31 +1,50 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchCenterList, fetchEventList, setCenterFilter, setEventFilter, SHOW_ALL } from '../actions'
+import * as ActionTypes from '../actions'
 import CenterSelect from '../components/CenterSelect'
+import EventTypeSelect from '../components/EventTypeSelect'
 import EventSelect from '../components/EventSelect'
 
 const SideBarContainer = React.createClass({
   componentDidMount() {
     const { dispatch, fetchCenters, fetchEvents } = this.props
-    dispatch(fetchCenterList())
-    dispatch(fetchEventList())
+    dispatch(ActionTypes.fetchCenterList())
+    dispatch(ActionTypes.fetchEventList())
   },
   handleCenterChange(filter) {
-    this.props.dispatch(setCenterFilter(filter))
+    this.props.dispatch(ActionTypes.setCenterFilter(filter))
+  },
+  handleEventTypeChange(filter) {
+    this.props.dispatch(ActionTypes.setEventTypeFilter(filter))
   },
   handleEventChange(filter) {
-    this.props.dispatch(setEventFilter(filter))
+    this.props.dispatch(ActionTypes.setEventFilter(filter))
   },
   render () {
     const centerFilter = this.props.contextFilters.centerFilter.filter
+    const eventTypeFilter = this.props.contextFilters.eventTypeFilter.filter
 
-    var filteredEvents = this.props.eventList.events.filter((event) => {
-      return (centerFilter != SHOW_ALL ? event.center.data.id == centerFilter : true)
-    })
+    var filteredEvents = this.props.eventList.events
+    
+    if(eventTypeFilter != ActionTypes.SHOW_ALL) {
+      filteredEvents = filteredEvents.filter((event) => {
+        switch(eventTypeFilter) {
+          case ActionTypes.SHOW_SOCIAL_EVENTS:
+            return (event.type == 'social')
+          case ActionTypes.SHOW_LEAGUE_EVENTS:
+            return (event.type == 'league')
+          case ActionTypes.SHOW_TOURNAMENT_EVENTS:
+            return (event.type == 'tournament')
+          default:
+            return true
+        }
+      })
+    }
 
     return (
       <div>
         <CenterSelect centers={this.props.centerList.centers} onChange={this.handleCenterChange} />
+        <EventTypeSelect onChange={this.handleEventTypeChange} />
         <EventSelect events={filteredEvents} onChange={this.handleEventChange} />
       </div>
     )

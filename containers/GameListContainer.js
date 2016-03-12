@@ -13,19 +13,24 @@ const GameListContainer = React.createClass({
       var output = <h1>Loading...</h1>
     } else {
       const centerFilter = this.props.contextFilters.centerFilter.filter
+      const eventTypeFilter = this.props.contextFilters.eventTypeFilter.filter
       const eventFilter = this.props.contextFilters.eventFilter.filter
 
       var filteredGames = this.props.games
 
       if(centerFilter != ActionTypes.SHOW_ALL) {
         filteredGames = filteredGames.filter((game) => {
-          return (game.event.data.center.data.id == centerFilter)
+          return (game.center.data.id == centerFilter)
         })
       }
-
+      
       if(eventFilter != ActionTypes.SHOW_ALL) {
         filteredGames = filteredGames.filter((game) => {
-          switch (eventFilter) {
+          return (game.event.data.id == eventFilter)
+        })
+      } else if(eventTypeFilter != ActionTypes.SHOW_ALL) {
+        filteredGames = filteredGames.filter((game) => {
+          switch (eventTypeFilter) {
             case ActionTypes.SHOW_LEAGUE_EVENTS:
               return (game.event.data.type == 'league')
             case ActionTypes.SHOW_SOCIAL_EVENTS:
@@ -33,7 +38,7 @@ const GameListContainer = React.createClass({
             case ActionTypes.SHOW_TOURNAMENT_EVENTS:
               return (game.event.data.type == 'tournament')
             default:
-              return (game.event.data.id == eventFilter)
+              return false
           }
         })
       }
