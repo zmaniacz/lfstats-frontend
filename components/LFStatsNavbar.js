@@ -15,7 +15,7 @@ var LFStatsNavbar = React.createClass({
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <LinkContainer to="/nightly"><NavItem>Nightly Stats</NavItem></LinkContainer>
+            <LinkContainer to="/events"><NavItem>Events</NavItem></LinkContainer>
             <LinkContainer to="/players"><NavItem>Top Players</NavItem></LinkContainer>
             <LinkContainer to="/games"><NavItem>Game List</NavItem></LinkContainer>
             <LinkContainer to="/leaderboards"><NavItem>Leader(Loser)boards</NavItem></LinkContainer>

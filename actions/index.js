@@ -94,6 +94,27 @@ export function fetchEventList() {
   }
 }
 
+function shouldFetchEventList(state) {
+  const eventList = state.eventList
+  if(eventList.events.length === 0) {
+    return true
+  }
+
+  if(eventList.isFetching) {
+    return false
+  }
+
+  return eventList.didInvalidate
+}
+
+export function fetchEventListIfNeeded() {
+  return (dispatch, getState) => {
+    if(shouldFetchEventList(getState())) {
+      return dispatch(fetchEventList())
+    }
+  }
+}
+
 export const REQUEST_GAME_LIST = 'REQUEST_GAME_LIST'
 export const RECEIVE_GAME_LIST = 'RECEIVE_GAME_LIST'
 

@@ -5,11 +5,12 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import LFStats from './containers/LFStats';
 import AboutContainer from './containers/AboutContainer';
+import HomeContainer from './containers/HomeContainer';
 import AllCenterTeamContainer from './containers/AllCenterTeamContainer';
 import CenterContainer from './containers/CenterContainer';
 import GameContainer from './containers/GameContainer';
 import LeaderBoardContainer from './containers/LeaderBoardContainer';
-import NightlyStatContainer from './containers/NightlyStatContainer';
+import EventListContainer from './containers/EventListContainer';
 import PenaltyContainer from './containers/PenaltyContainer';
 import PlayerContainer from './containers/PlayerContainer';
 import TwitchContainer from './containers/TwitchContainer';
@@ -20,7 +21,7 @@ render((
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={LFStats}>
-        <IndexRoute component={NightlyStatContainer} />
+        <IndexRoute component={HomeContainer} />
         <Route path="/about" component={AboutContainer} />
         <Route path="/allcenter" component={AllCenterTeamContainer} />
         <Route path="/centers" component={CenterContainer} />
@@ -28,7 +29,7 @@ render((
           <Route path="/games/:gameId" component={GameContainer} />
         </Route>
         <Route path="/leaderboards" component={LeaderBoardContainer} />
-        <Route path="/nightly" component={NightlyStatContainer} />
+        <Route path="/events/" component={EventListContainer} />
         <Route path="/penalties" component={PenaltyContainer} />
         <Route path="/players" component={PlayerContainer} />
         <Route path="/twitch" component={TwitchContainer} />
