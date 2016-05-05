@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { Input } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import { SHOW_ALL } from '../actions'
 
 const EventSelect = React.createClass({
@@ -14,10 +14,13 @@ const EventSelect = React.createClass({
     })
 
     return (
-      <Input type="select" label="Event" placeholder="All" onChange={e => onChange(e.target.value)}>
-        <option value={SHOW_ALL}>All</option>
-        {options}
-      </Input>
+      <FormGroup>
+        <ControlLabel>Event</ControlLabel>
+        <FormControl componentClass="select" placeholder="All" onChange={e => onChange(e.target.value)}>
+          <option value={SHOW_ALL}>All</option>
+          {options}
+        </FormControl>
+      </FormGroup>
     )
   }
 })

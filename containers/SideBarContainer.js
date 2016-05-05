@@ -43,9 +43,11 @@ const SideBarContainer = React.createClass({
 
     return (
       <div>
-        <CenterSelect centers={this.props.centerList.centers} onChange={this.handleCenterChange} />
-        <EventTypeSelect onChange={this.handleEventTypeChange} />
-        <EventSelect events={filteredEvents} onChange={this.handleEventChange} />
+        <form>
+          <CenterSelect centers={this.props.centerList.centers} onChange={this.handleCenterChange} />
+          <EventTypeSelect onChange={this.handleEventTypeChange} />
+          <EventSelect events={filteredEvents} onChange={this.handleEventChange} />
+        </form>
       </div>
     )
   }
