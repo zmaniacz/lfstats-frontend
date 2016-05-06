@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import LFStats from './containers/LFStats';
+import StatsContainer from './containers/StatsContainer';
 import AboutContainer from './containers/AboutContainer';
 import HomeContainer from './containers/HomeContainer';
 import AllCenterTeamContainer from './containers/AllCenterTeamContainer';
@@ -22,17 +23,19 @@ render((
     <Router history={browserHistory}>
       <Route path="/" component={LFStats}>
         <IndexRoute component={HomeContainer} />
-        <Route path="/about" component={AboutContainer} />
-        <Route path="/allcenter" component={AllCenterTeamContainer} />
-        <Route path="/centers" component={CenterContainer} />
-        <Route path="/games" component={GameContainer}>
-          <Route path="/games/:gameId" component={GameContainer} />
+        <Route component={StatsContainer}>
+          <Route path="/about" component={AboutContainer} />
+          <Route path="/allcenter" component={AllCenterTeamContainer} />
+          <Route path="/centers" component={CenterContainer} />
+          <Route path="/games" component={GameContainer}>
+            <Route path="/games/:gameId" component={GameContainer} />
+          </Route>
+          <Route path="/leaderboards" component={LeaderBoardContainer} />
+          <Route path="/events/" component={EventListContainer} />
+          <Route path="/penalties" component={PenaltyContainer} />
+          <Route path="/players" component={PlayerContainer} />
+          <Route path="/twitch" component={TwitchContainer} />
         </Route>
-        <Route path="/leaderboards" component={LeaderBoardContainer} />
-        <Route path="/events/" component={EventListContainer} />
-        <Route path="/penalties" component={PenaltyContainer} />
-        <Route path="/players" component={PlayerContainer} />
-        <Route path="/twitch" component={TwitchContainer} />
       </Route>
     </Router>
   </Provider>
