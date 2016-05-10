@@ -7,14 +7,31 @@ require('datatables.net-bs');
 
 var GameList = React.createClass({
   componentDidMount: function() {
-    jQuery('#game_list').DataTable();
+    jQuery('#game_list').DataTable({
+      "deferRender": true,
+      "columns": [
+        {"width": "20%"},
+        {"width": "20%"},
+        {"width": "20%"},
+        {"width": "20%"},
+        {"width": "20%"}
+      ]
+    });
   },
   componentWillUpdate: function() {
-    var table = jQuery('#game_list').DataTable();
-    table.destroy();
+    jQuery('#game_list').DataTable().destroy();
   },
   componentDidUpdate: function() {
-    jQuery('#game_list').DataTable();
+    jQuery('#game_list').DataTable({
+      "deferRender": true,
+      "columns": [
+        {"width": "20%"},
+        {"width": "20%"},
+        {"width": "20%"},
+        {"width": "20%"},
+        {"width": "20%"}
+      ]
+    });
   },
   render: function () {
     var table = this.props.games.map(function (d, index) {
