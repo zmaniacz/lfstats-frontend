@@ -40,7 +40,7 @@ var GameList = React.createClass({
 
       return (
         <tr key={d.id}>
-          <td><LinkContainer to={{ pathname: '/games/'+d.id }}><Button bsStyle={d.winner == 'Red' ? "danger" : "success"} block>{d.name}</Button></LinkContainer></td>
+          <td><LinkContainer to={{ pathname: '/games/'+d.id }}><Button bsStyle={d.winner == 'red' ? "danger" : "success"} block>{d.name}</Button></LinkContainer></td>
           <td>{d.played_at}</td>
           <td>{d.green_score}</td>
           <td>{d.red_score}</td>
