@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
+import 'react-virtualized/styles.css';
 import configureStore from './store/configureStore';
 import LFStats from './containers/LFStats';
 import StatsContainer from './containers/StatsContainer';
