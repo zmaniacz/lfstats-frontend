@@ -1,26 +1,27 @@
 import React, { PropTypes } from 'react'
-import jQuery from 'jquery';
-import DataTable from 'datatables.net';
-import { Table, Button } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { PageHeader, Well } from 'react-bootstrap';
 import GameTeam from './GameTeam'
-require('datatables.net-bs');
 
 const GameView = React.createClass({
-  componentDidMount: function() {
-    //jQuery('#game_view').DataTable();
-  },
-  componentWillUpdate: function() {
-    //var table = jQuery('#game_view').DataTable();
-    //table.destroy();
-  },
-  componentDidUpdate: function() {
-    //jQuery('#game_view').DataTable();
-  },
   render () {
+    if(this.props.game.teams.data[0].winner)
+    {
+      var winner = this.props.game.teams.data[0];
+      var loser = this.props.game.teams.data[1];
+    }
+    else
+    {
+      var winner = this.props.game.teams.data[1];
+      var loser = this.props.game.teams.data[0];
+    }
     return (
       <div>
-        <GameTeam team={this.props.game.teams.data[0]} />
+        <PageHeader>
+          {this.props.game.name} - {this.props.game.teams.data[0].color} vs {this.props.game.teams.data[1].color} <small>{this.props.game.played_at} - {this.props.game.pdf}</small>
+        </PageHeader>
+        <Well>Numbers in parentheses are score adjustments due to penalties and elimination bonuses</Well>
+        <GameTeam team={winner} />
+        <GameTeam team={loser} />
       </div>
     )
   }
