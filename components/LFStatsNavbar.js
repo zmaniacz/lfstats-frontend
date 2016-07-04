@@ -1,35 +1,35 @@
-import React, { PropTypes } from 'react';
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import React, {Component} from 'react';
 import FacebookLogin from './FacebookLogin';
 
-var LFStatsNavbar = React.createClass({
-  render () {
+class LFStatsNavbar extends Component {
+  render() {
     return (
-      <Navbar fixedTop={true} fluid={true}>
-        <Navbar.Header>
-          <Navbar.Brand>
-            LFStats
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <LinkContainer to="/events"><NavItem>Events</NavItem></LinkContainer>
-            <LinkContainer to="/players"><NavItem>Top Players</NavItem></LinkContainer>
-            <LinkContainer to="/games"><NavItem>Game List</NavItem></LinkContainer>
-            <LinkContainer to="/leaderboards"><NavItem>Leader(Loser)boards</NavItem></LinkContainer>
-            <LinkContainer to="/centers"><NavItem>Center Stats</NavItem></LinkContainer>
-            <LinkContainer to="/allcenter"><NavItem>All-Center Teams</NavItem></LinkContainer>
-            <LinkContainer to="/penalties"><NavItem>Penalties</NavItem></LinkContainer>
-            <LinkContainer to="/about"><NavItem>About SM5</NavItem></LinkContainer>
-            <LinkContainer to="/twitch"><NavItem>Twitch</NavItem></LinkContainer>
-          </Nav>
-          <Nav pullRight><FacebookLogin fb={FB} /></Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <nav className="navbar navbar-default navbar-fixed-top">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#lfstats-navbar">
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+            </button>
+          </div>
+          <div className="collapse navbar-collapse" id="lfstats-navbar">
+            <ul className="nav navbar-nav">
+              <li><a href="#">Nightly Stats</a></li>
+              <li><a href="#">Top Players</a></li>
+              <li><a href="#">Game List</a></li>
+              <li><a href="#">Leader(Loser)boards</a></li>
+              <li><a href="#">Center Stats</a></li>
+              <li><a href="#">All-Center Teams</a></li>
+              <li><a href="#">Penalties</a></li>
+              <li><a href="#">About SM5</a></li>
+              <li><a href="#">Twitch</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     );
   }
-});
+}
 
 export default LFStatsNavbar;

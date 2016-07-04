@@ -11,7 +11,7 @@ class EventListContainer extends Component {
   
   render() {
     if(this.props.isFetching || this.props.events.length === 0) {
-      var output = <h1>Loading...</h1>
+      var output = "Loading..."
     } else {
       var filteredEvents = this.props.events
       

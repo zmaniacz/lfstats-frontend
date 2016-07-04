@@ -1,24 +1,20 @@
-import React, { PropTypes } from 'react'
-import { Grid, Row, Col } from 'react-bootstrap';
-import LFStatsNavbar from '../components/LFStatsNavbar';
-
-var LFStatsApp = React.createClass({
-  render () {
+import React, {Component} from 'react';
+import HomeContainer from './HomeContainer';
+import LFStatsNavBar from '../components/LFStatsNavBar';
+ 
+class LFStats extends Component {
+  render() {
     return (
-      <Grid fluid={true}>
-        <Row>
-          <Col xs={12}>
-            <LFStatsNavbar />
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12}>
-            {this.props.children}
-          </Col>
-        </Row>
-      </Grid>
-    )
+      <div className="container">
+        <LFStatsNavBar />
+        <div className="row">
+          <div className="col-xs-12">
+            <HomeContainer />
+          </div>
+        </div>
+      </div>
+    );
   }
-})
+}
 
-export default LFStatsApp;
+export default LFStats;
