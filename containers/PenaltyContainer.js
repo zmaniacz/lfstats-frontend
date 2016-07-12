@@ -1,11 +1,13 @@
-import React, { PropTypes } from 'react'
+import React, {Component} from 'react';
 
-const PenaltyContainer = React.createClass({
-  render () {
+class PenaltyContainer extends Component {
+  render() {
     return (
-      <div>Penalties go here</div>
-    )
+      <div>
+        Penalties
+      </div>
+    );
   }
-})
+}
 
-export default PenaltyContainer
+export default PenaltyContainer;

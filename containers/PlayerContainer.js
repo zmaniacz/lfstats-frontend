@@ -1,11 +1,13 @@
-import React, { PropTypes } from 'react'
+import React, {Component} from 'react';
 
-const PlayerContainer = React.createClass({
-  render () {
+class PlayerContainer extends Component {
+  render() {
     return (
-      <div>Player list here</div>
-    )
+      <div>
+        Player list
+      </div>
+    );
   }
-})
+}
 
-export default PlayerContainer
+export default PlayerContainer;

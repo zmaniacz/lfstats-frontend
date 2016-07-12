@@ -1,33 +1,29 @@
-import React, { PropTypes } from 'react'
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
-import { SHOW_ALL } from '../actions'
+import React, {Component,PropTypes} from 'react';
+import { SHOW_ALL } from '../actions';
 
-const EventSelect = React.createClass({
+class EventSelect extends Component {
   render () {
-    const { events, onChange } = this.props
-
-    var options = events.map(function (d, index) {
-      let text = d.type+' - '+d.name
-      return (
-        <option key={d.id} value={d.id}>{text}</option>
-      )
-    })
+    const { events, onChange } = this.props;
 
     return (
-      <FormGroup>
-        <ControlLabel>Event</ControlLabel>
-        <FormControl componentClass="select" placeholder="All" onChange={e => onChange(e.target.value)}>
-          <option value={SHOW_ALL}>All</option>
-          {options}
-        </FormControl>
-      </FormGroup>
-    )
+      <form>
+        <div className="form-group">
+          <label for="eventSelect">Event</label>
+          <select className="form-control" id="eventSelect" onChange={e => onChange(e.target.value) }>
+            <option value={SHOW_ALL}>All</option>
+            {events.map((row, index) => (
+              <option key={index} value={row.id}>{row.type} - {row.name}</option>
+            ))}
+          </select>
+        </div>
+      </form>
+    );
   }
-})
+}
 
 EventSelect.PropTypes = {
   events: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired
 }
 
-export default EventSelect
+export default EventSelect;

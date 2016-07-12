@@ -1,11 +1,13 @@
-import React, { PropTypes } from 'react'
+import React, {Component} from 'react';
 
-const TwitchContainer = React.createClass({
-  render () {
+class TwitchContainer extends Component {
+  render() {
     return (
-      <div>Twitch yo</div>
-    )
+      <div>
+        Twitch yo
+      </div>
+    );
   }
-})
+}
 
-export default TwitchContainer
+export default TwitchContainer;

@@ -1,11 +1,13 @@
-import React, { PropTypes } from 'react'
+import React, {Component} from 'react';
 
-const AboutContainer = React.createClass({
-  render () {
+class AboutContainer extends Component {
+  render() {
     return (
-      <div>about goes here</div>
-    )
+      <div>
+        About SM5
+      </div>
+    );
   }
-})
+}
 
-export default AboutContainer
+export default AboutContainer;

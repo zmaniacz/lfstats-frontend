@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import {AutoSizer, Grid, VirtualScroll, FlexTable, FlexColumn } from'react-virtualized';
-import { Button } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { AutoSizer, Grid, VirtualScroll, FlexTable, FlexColumn } from'react-virtualized';
 
 class GameList extends Component {
   render() {
@@ -28,11 +26,9 @@ class GameList extends Component {
               cellRenderer={
                 ({ cellData, columnData, dataKey, rowData, rowIndex }) => {
                   return (
-                    <LinkContainer to={{ pathname: '/games/'+rowData.id }}>
-                      <Button bsStyle={rowData.winner == 'red' ? "danger" : "success"} block>
-                        {cellData === null ? "Game " + rowData.id : cellData}
-                      </Button>
-                    </LinkContainer>
+                    <a className={rowData.winner == 'red' ? "btn btn-danger" : "btn btn-success"} href="#">
+                      {cellData === null ? "Game " + rowData.id : cellData}
+                    </a>
                   );
                 }
               }

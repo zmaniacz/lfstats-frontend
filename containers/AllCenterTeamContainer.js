@@ -1,11 +1,13 @@
-import React, { PropTypes } from 'react'
+import React, {Component} from 'react';
 
-const AllCenterTeamContainer = React.createClass({
-  render () {
+class AllCenterContainer extends Component {
+  render() {
     return (
-      <div>All-center teams go here</div>
-    )
+      <div>
+        All-Center
+      </div>
+    );
   }
-})
+}
 
-export default AllCenterTeamContainer
+export default AllCenterContainer;

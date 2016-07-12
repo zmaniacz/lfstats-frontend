@@ -1,11 +1,13 @@
-import React, { PropTypes } from 'react'
+import React, {Component} from 'react';
 
-const CenterContainer = React.createClass({
-  render () {
+class CenterContainer extends Component {
+  render() {
     return (
-      <div>Center stats go here</div>
-    )
+      <div>
+        Center stats
+      </div>
+    );
   }
-})
+}
 
-export default CenterContainer
+export default CenterContainer;

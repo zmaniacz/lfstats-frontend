@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
-import { Panel, Table } from 'react-bootstrap';
 
 class GameTeam extends Component {
   render() {
     if(this.props.team.color == "red")
     {
-      var style = "danger";
+      var style = "panel panel-danger";
       var name = "Red Team";
     }
     else
     {
-      var style = "success";
+      var style = "panel panel-success";
       var name = "Green Team";
     }
+
     return (
-      <Panel bsStyle={style} header={name}>
-        <Table striped bordered condensed hover responsive>
+      <div className={style} header={name}>
+        <table className="table table-striped table-bordered table-condensed table-hover table-responsive">
           <thead>
             <tr>
               <th>Merc</th>
@@ -31,8 +31,8 @@ class GameTeam extends Component {
               <th>Penalties</th>
             </tr>
           </thead>
-        </Table>
-      </Panel>
+        </table>
+      </div>
     );
   }
 }

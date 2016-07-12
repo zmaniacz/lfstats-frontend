@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
-import SideBarContainer from './SideBarContainer';
+import FilterDock from '../components/FilterDock';
 
 class StatsContainer extends Component {
   render() {
     return (
-      <Grid fluid={true}>
-        <Row>
-          <Col xs={2}>
-            <SideBarContainer />
-          </Col>
-          <Col xs={10}>
+      <div>
+        <FilterDock />
+        <div className="row">
+          <div className="col-lg-12">
             {this.props.children}
-          </Col>
-        </Row>
-      </Grid>
+          </div>
+        </div>
+      </div>
     );
   }
 }

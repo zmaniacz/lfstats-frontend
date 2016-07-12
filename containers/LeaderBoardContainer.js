@@ -1,11 +1,13 @@
-import React, { PropTypes } from 'react';
+import React, {Component} from 'react';
 
-const LeaderBoardContainer = React.createClass({
-  render () {
+class LeaderboardContainer extends Component {
+  render() {
     return (
-      <div>Leaderboards go here</div>
-    )
+      <div>
+        Leaderboards
+      </div>
+    );
   }
-})
+}
 
-export default LeaderBoardContainer;
+export default LeaderboardContainer;

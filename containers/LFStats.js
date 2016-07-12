@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import HomeContainer from './HomeContainer';
+import FilterDock from '../components/FilterDock';
 import LFStatsNavBar from '../components/LFStatsNavBar';
  
 class LFStats extends Component {
@@ -8,8 +9,8 @@ class LFStats extends Component {
       <div className="container">
         <LFStatsNavBar />
         <div className="row">
-          <div className="col-xs-12">
-            <HomeContainer />
+          <div className="col-lg-12">
+            {this.props.children}
           </div>
         </div>
       </div>

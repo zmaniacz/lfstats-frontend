@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import Request from 'superagent';
-import { Glyphicon } from 'react-bootstrap'
 import GameView from '../components/GameView'
 
 const GameViewContainer = React.createClass({
@@ -28,7 +27,7 @@ const GameViewContainer = React.createClass({
       var response = <GameView game={this.state.data} />
     }
     else {
-      var response = <Glyphicon glyph="refresh glyphicon-refresh-animate" />;
+      var response = "Loading";
     }
 
     return (

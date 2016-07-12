@@ -1,32 +1,29 @@
-import React, { PropTypes } from 'react'
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
-import { SHOW_ALL } from '../actions'
+import React, {Component,PropTypes} from 'react';
+import { SHOW_ALL } from '../actions';
 
-const CenterSelect = React.createClass({
-  render () {
-    const { centers, onChange } = this.props
-
-    var options = centers.map(function (d, index) {
-      return (
-        <option key={d.id} value={d.id}>{d.name}</option>
-      )
-    })
+class CenterSelect extends Component {
+  render() {
+    const { centers, onChange } = this.props;
 
     return (
-      <FormGroup>
-        <ControlLabel>Center</ControlLabel>
-        <FormControl componentClass="select" placeholder="All" onChange={e => onChange(e.target.value)}>
-          <option value={SHOW_ALL}>All</option>
-          {options}
-        </FormControl>
-      </FormGroup>
-    )
+      <form>
+        <div className="form-group">
+          <label for="centerSelect">Center</label>
+          <select className="form-control" id="centerSelect" onChange={e => onChange(e.target.value)}>
+            <option value={SHOW_ALL}>All</option>
+            {centers.map( (row, index) => (
+              <option key={index} value={row.id}>{row.name}</option>
+            ))}
+          </select>
+        </div>
+      </form>
+    );
   }
-})
+}
 
 CenterSelect.PropTypes = {
   centers: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired
 }
 
-export default CenterSelect
+export default CenterSelect;

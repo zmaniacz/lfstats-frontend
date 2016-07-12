@@ -5,17 +5,17 @@ import { Provider } from 'react-redux';
 import 'react-virtualized/styles.css';
 import configureStore from './store/configureStore';
 import LFStats from './containers/LFStats';
-//import StatsContainer from './containers/StatsContainer';
-//import AboutContainer from './containers/AboutContainer';
+import StatsContainer from './containers/StatsContainer';
+import AboutContainer from './containers/AboutContainer';
 import HomeContainer from './containers/HomeContainer';
-//import AllCenterTeamContainer from './containers/AllCenterTeamContainer';
-//import CenterContainer from './containers/CenterContainer';
-//import GameContainer from './containers/GameContainer';
-//import LeaderBoardContainer from './containers/LeaderBoardContainer';
-//import EventListContainer from './containers/EventListContainer';
-//import PenaltyContainer from './containers/PenaltyContainer';
-//import PlayerContainer from './containers/PlayerContainer';
-//import TwitchContainer from './containers/TwitchContainer';*/
+import AllCenterTeamContainer from './containers/AllCenterTeamContainer';
+import CenterContainer from './containers/CenterContainer';
+import GameContainer from './containers/GameContainer';
+import LeaderBoardContainer from './containers/LeaderBoardContainer';
+import EventListContainer from './containers/EventListContainer';
+import PenaltyContainer from './containers/PenaltyContainer';
+import PlayerContainer from './containers/PlayerContainer';
+import TwitchContainer from './containers/TwitchContainer';
 
 const store = configureStore();
 
@@ -24,7 +24,7 @@ ReactDOM.render((
     <Router history={browserHistory}>
       <Route path="/" component={LFStats}>
         <IndexRoute component={HomeContainer} />
-        {/*<Route component={StatsContainer}>
+        <Route component={StatsContainer}>
           <Route path="/about" component={AboutContainer} />
           <Route path="/allcenter" component={AllCenterTeamContainer} />
           <Route path="/centers" component={CenterContainer} />
@@ -36,7 +36,7 @@ ReactDOM.render((
           <Route path="/penalties" component={PenaltyContainer} />
           <Route path="/players" component={PlayerContainer} />
           <Route path="/twitch" component={TwitchContainer} />
-        </Route>*/}
+        </Route>
       </Route>
     </Router>
   </Provider>
