@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 import { AutoSizer, Grid, VirtualScroll, FlexTable, FlexColumn } from'react-virtualized';
 
 class GameList extends Component {
@@ -26,9 +27,9 @@ class GameList extends Component {
               cellRenderer={
                 ({ cellData, columnData, dataKey, rowData, rowIndex }) => {
                   return (
-                    <a className={rowData.winner == 'red' ? "btn btn-danger" : "btn btn-success"} href="#">
+                    <Link to={`/games/${rowData.id}`} className={rowData.winner == 'red' ? "btn btn-danger btn-block" : "btn btn-success btn-block"} href="#">
                       {cellData === null ? "Game " + rowData.id : cellData}
-                    </a>
+                    </Link>
                   );
                 }
               }
