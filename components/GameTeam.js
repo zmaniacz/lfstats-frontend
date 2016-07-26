@@ -14,24 +14,27 @@ class GameTeam extends Component {
     }
 
     return (
-      <div className={style} header={name}>
-        <table className="table table-striped table-bordered table-condensed table-hover table-responsive">
-          <thead>
-            <tr>
-              <th>Merc</th>
-              <th>Alive</th>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Score</th>
-              <th>MVP Points</th>
-              <th>Accuracy</th>
-              <th>Hit Diff</th>
-              <th>Missiled/Got Missiled</th>
-              <th>Medic Hits</th>
-              <th>Penalties</th>
-            </tr>
-          </thead>
-        </table>
+      <div className={style}>
+        <div className="panel-heading">{name}</div>
+        <div className="panel-body">
+          <table className="table table-striped table-bordered table-condensed table-hover table-responsive">
+            <thead>
+              <tr>
+                <th>Merc</th>
+                <th>Alive</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Score</th>
+                <th>MVP Points</th>
+                <th>Accuracy</th>
+                <th>Hit Diff</th>
+                <th>Missiled/Got Missiled</th>
+                <th>Medic Hits</th>
+                <th>Penalties</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
       </div>
     );
   }

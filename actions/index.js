@@ -65,6 +65,27 @@ export function fetchCenterList() {
   }
 }
 
+function shouldFetchCenterList(state) {
+  const centerList = state.centerList
+  if(centerList.centers.length === 0) {
+    return true
+  }
+
+  if(centerList.isFetching) {
+    return false
+  }
+
+  return centerList.didInvalidate
+}
+
+export function fetchCenterListIfNeeded() {
+  return (dispatch, getState) => {
+    if(shouldFetchCenterList(getState())) {
+      return dispatch(fetchCenterList())
+    }
+  }
+}
+
 export const REQUEST_EVENT_LIST = 'REQUEST_EVENT_LIST'
 export const RECEIVE_EVENT_LIST = 'RECEIVE_EVENT_LIST'
 
