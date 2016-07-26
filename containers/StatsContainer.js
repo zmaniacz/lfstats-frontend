@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux'
+import { fetchCenterListIfNeeded, fetchEventListIfNeeded } from '../actions';
 import FilterDock from '../components/FilterDock';
 
 class StatsContainer extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(fetchCenterListIfNeeded())
+    dispatch(fetchEventListIfNeeded())
+  }
+  
   render() {
     return (
       <div>
@@ -16,4 +24,4 @@ class StatsContainer extends Component {
   }
 }
 
-export default StatsContainer;
+export default connect()(StatsContainer);
