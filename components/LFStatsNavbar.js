@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 import FacebookLogin from './FacebookLogin';
 
 class LFStatsNavbar extends Component {
@@ -15,15 +16,15 @@ class LFStatsNavbar extends Component {
           </div>
           <div className="collapse navbar-collapse" id="lfstats-navbar">
             <ul className="nav navbar-nav">
-              <li><a href="#">Nightly Stats</a></li>
-              <li><a href="#">Top Players</a></li>
-              <li><a href="#">Game List</a></li>
-              <li><a href="#">Leader(Loser)boards</a></li>
-              <li><a href="#">Center Stats</a></li>
-              <li><a href="#">All-Center Teams</a></li>
-              <li><a href="#">Penalties</a></li>
-              <li><a href="#">About SM5</a></li>
-              <li><a href="#">Twitch</a></li>
+              <li><Link to={'/'}>Events</Link></li>
+              <li><Link to={'/players'}>Top Players</Link></li>
+              <li><Link to={'/games'}>Game List</Link></li>
+              <li><Link to={'/leaderboards'}>Leader(Loser)boards</Link></li>
+              <li><Link to={'/centers'}>Center Stats</Link></li>
+              <li><Link to={'/allcenter'}>All-Center Teams</Link></li>
+              <li><Link to={'/penalties'}>Penalties</Link></li>
+              <li><Link to={'/about'}>About SM5</Link></li>
+              <li><Link to={'/twitch'}>Twitch</Link></li>
             </ul>
           </div>
         </div>
