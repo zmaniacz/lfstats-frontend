@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchCenterList, setCenterFilter } from '../actions';
+import { setCenterFilter } from '../actions';
 import CenterSelect from '../components/CenterSelect';
 
 

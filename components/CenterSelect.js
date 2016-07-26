@@ -1,14 +1,11 @@
-import React, {Component,PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import { SHOW_ALL } from '../actions';
 
-class CenterSelect extends Component {
-  render() {
-    const { centers, onChange } = this.props;
-
-    return (
+const CenterSelect = ({centers, onChange}) => {
+  return (
       <form>
         <div className="form-group">
-          <label for="centerSelect">Center</label>
+          <label htmlFor="centerSelect">Center</label>
           <select className="form-control" id="centerSelect" onChange={e => onChange(e.target.value)}>
             <option value={SHOW_ALL}>All</option>
             {centers.map( (row, index) => (
@@ -17,9 +14,8 @@ class CenterSelect extends Component {
           </select>
         </div>
       </form>
-    );
-  }
-}
+  );
+};
 
 CenterSelect.PropTypes = {
   centers: PropTypes.array.isRequired,
