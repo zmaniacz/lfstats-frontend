@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { setCenterFilter } from '../actions';
 import CenterSelect from '../components/CenterSelect';
 
-
 const mapStateToProps = (state) => {
   return {
     centers: state.centerList.centers
