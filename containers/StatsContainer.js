@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { fetchCenterListIfNeeded, fetchEventListIfNeeded } from '../actions';
+import { Row, Col } from 'react-bootstrap';
 import FilterDock from '../components/FilterDock';
 
 class StatsContainer extends Component {
@@ -14,11 +15,11 @@ class StatsContainer extends Component {
     return (
       <div>
         <FilterDock />
-        <div className="row">
-          <div className="col-lg-12">
+        <Row>
+          <Col lg={12}>
             {this.props.children}
-          </div>
-        </div>
+          </Col>
+        </Row>
       </div>
     );
   }

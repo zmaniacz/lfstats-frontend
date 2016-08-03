@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Grid, Row, Col } from 'react-bootstrap';
 import HomeContainer from './HomeContainer';
 import FilterDock from '../components/FilterDock';
 import LFStatsNavBar from '../components/LFStatsNavBar';
@@ -6,14 +7,14 @@ import LFStatsNavBar from '../components/LFStatsNavBar';
 class LFStats extends Component {
   render() {
     return (
-      <div className="container">
+      <Grid>
         <LFStatsNavBar />
-        <div className="row">
-          <div className="col-lg-12">
+        <Row>
+          <Col lg={12}>
             {this.props.children}
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

@@ -1,34 +1,43 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
-import FacebookLogin from './FacebookLogin';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import FacebookLogin from 'react-facebook-login';
 
 class LFStatsNavbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-default navbar-fixed-top">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#lfstats-navbar">
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </button>
-          </div>
-          <div className="collapse navbar-collapse" id="lfstats-navbar">
-            <ul className="nav navbar-nav">
-              <li><Link to={'/'}>Events</Link></li>
-              <li><Link to={'/players'}>Top Players</Link></li>
-              <li><Link to={'/games'}>Game List</Link></li>
-              <li><Link to={'/leaderboards'}>Leader(Loser)boards</Link></li>
-              <li><Link to={'/centers'}>Center Stats</Link></li>
-              <li><Link to={'/allcenter'}>All-Center Teams</Link></li>
-              <li><Link to={'/penalties'}>Penalties</Link></li>
-              <li><Link to={'/about'}>About SM5</Link></li>
-              <li><Link to={'/twitch'}>Twitch</Link></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <Navbar fixedTop>
+        <Navbar.Header>
+          <Navbar.Brand>
+            LFStats
+          </Navbar.Brand>
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <Nav>
+            <LinkContainer to={'/'}><NavItem>Events</NavItem></LinkContainer>
+            <LinkContainer to={'/players'}><NavItem>Top Players</NavItem></LinkContainer>
+            <LinkContainer to={'/games'}><NavItem>Game List</NavItem></LinkContainer>
+            <LinkContainer to={'/leaderboards'}><NavItem>Leader(Loser)boards</NavItem></LinkContainer>
+            <LinkContainer to={'/centers'}><NavItem>Center Stats</NavItem></LinkContainer>
+            <LinkContainer to={'/allcenter'}><NavItem>All-Center Teams</NavItem></LinkContainer>
+            <LinkContainer to={'/penalties'}><NavItem>Penalties</NavItem></LinkContainer>
+            <LinkContainer to={'/about'}><NavItem>About SM5</NavItem></LinkContainer>
+            <LinkContainer to={'/twitch'}><NavItem>Twitch</NavItem></LinkContainer>
+          </Nav>
+          <Nav pullRight>
+            <FacebookLogin
+              appId="1041205075951970"
+              size="small"
+              autoLoad={true}
+              fields="name,email,picture"
+              callback={(response) => { console.log(response) } }
+              cssClass=""
+              icon="fa-facebook" 
+              />
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
