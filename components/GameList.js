@@ -1,13 +1,33 @@
-import React, {Component} from 'react';
+import React, {Component,PropTypes} from 'react';
 import {Link} from 'react-router';
-import { AutoSizer, Grid, VirtualScroll, FlexTable, FlexColumn } from'react-virtualized';
+import { AutoSizer, FlexTable, FlexColumn } from 'react-virtualized';
 
 class GameList extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      sortBy: 'played_at',
+      sortDirection: 'ASC'
+    }
+
+    this._sort = this._sort.bind(this)
+  }
+  
   render() {
-    var games = this.props.games;
+    const { sortBy, sortDirection } = this.state
+
+    let games = this.props.games
+    
+    games = _.sortBy(games, sortBy)
+    
+    if (sortDirection == 'DESC')
+      _.reverse(games)
+
     const rowStyle = {
       borderBottom:'1px solid #e0e0e0'
     }
+    
     return (
       <AutoSizer disableHeight>
         { ({ width }) => (
@@ -17,8 +37,11 @@ class GameList extends Component {
             rowCount={games.length}
             headerHeight={20}
             rowHeight={40}
-            rowGetter={ index => games[index.index] }
+            rowGetter={ ({index}) => games[index] }
             rowStyle={ rowStyle }
+            sort={this._sort}
+            sortBy={sortBy}
+            sortDirection={sortDirection}
           >
             <FlexColumn
               label='Game'
@@ -59,6 +82,10 @@ class GameList extends Component {
       </AutoSizer>
     );
   }
+
+  _sort ({ sortBy, sortDirection }) {
+    this.setState({ sortBy, sortDirection })
+  }
 }
 
-export default GameList;
+export default GameList
