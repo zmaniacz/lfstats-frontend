@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import FacebookLogin from 'react-facebook-login';
 
 class LFStatsNavbar extends Component {
   render() {
@@ -26,15 +25,6 @@ class LFStatsNavbar extends Component {
             <LinkContainer to={'/twitch'}><NavItem>Twitch</NavItem></LinkContainer>
           </Nav>
           <Nav pullRight>
-            <FacebookLogin
-              appId="1041205075951970"
-              size="small"
-              autoLoad={true}
-              fields="name,email,picture"
-              callback={(response) => { console.log(response) } }
-              cssClass=""
-              icon="fa-facebook" 
-              />
           </Nav>
         </Navbar.Collapse>
       </Navbar>
