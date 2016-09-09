@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import HomeContainer from './HomeContainer';
-import FilterDock from '../components/FilterDock';
 import LFStatsNavBar from '../components/LFStatsNavBar';
  
 class LFStats extends Component {

@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { fetchCenterListIfNeeded, fetchEventListIfNeeded } from '../actions';
 import { Row, Col } from 'react-bootstrap';
-import FilterDock from '../components/FilterDock';
+import CenterSelectContainer from '../containers/CenterSelectContainer';
+import EventTypeSelectContainer from '../containers/EventTypeSelectContainer';
+import EventSelectContainer from '../containers/EventSelectContainer';
 
 class StatsContainer extends Component {
   componentDidMount() {
@@ -14,7 +16,13 @@ class StatsContainer extends Component {
   render() {
     return (
       <div>
-        <FilterDock />
+        <Row>
+          <Col>
+            <CenterSelectContainer />
+            <EventTypeSelectContainer />
+            <EventSelectContainer />
+          </Col>
+        </Row>
         <Row>
           <Col lg={12}>
             {this.props.children}
