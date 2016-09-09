@@ -5,7 +5,8 @@ import EventSelect from '../components/EventSelect';
 
 const mapStateToProps = (state) => {
   return {
-    events: state.eventList.events
+    events: state.eventList.events,
+    selectedEvent: state.contextFilters.eventFilter.filter
   }
 }
 

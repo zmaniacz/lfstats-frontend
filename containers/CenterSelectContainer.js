@@ -4,7 +4,8 @@ import CenterSelect from '../components/CenterSelect';
 
 const mapStateToProps = (state) => {
   return {
-    centers: state.centerList.centers
+    centers: state.centerList.centers,
+    selectedCenter: state.contextFilters.centerFilter.filter
   }
 }
 

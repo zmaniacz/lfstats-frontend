@@ -2,6 +2,12 @@ import { connect } from 'react-redux';
 import { setEventTypeFilter } from '../actions';
 import EventTypeSelect from '../components/EventTypeSelect';
 
+const mapStateToProps = (state) => {
+  return {
+    selectedEventType: state.contextFilters.eventTypeFilter.filter
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onChange: (type) => {
@@ -11,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const EventTypeSelectContainer = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(EventTypeSelect)
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
+import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 class LFStatsNavbar extends Component {
@@ -14,7 +14,7 @@ class LFStatsNavbar extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <LinkContainer to={'/'}><NavItem>Events</NavItem></LinkContainer>
+            <IndexLinkContainer to={'/'}><NavItem>Events</NavItem></IndexLinkContainer>
             <LinkContainer to={'/players'}><NavItem>Top Players</NavItem></LinkContainer>
             <LinkContainer to={'/games'}><NavItem>Game List</NavItem></LinkContainer>
             <LinkContainer to={'/leaderboards'}><NavItem>Leader(Loser)boards</NavItem></LinkContainer>

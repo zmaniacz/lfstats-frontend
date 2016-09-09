@@ -17,9 +17,13 @@ class StatsContainer extends Component {
     return (
       <div>
         <Row>
-          <Col>
+          <Col lg={4}>
             <CenterSelectContainer />
-            <EventTypeSelectContainer />
+            </Col>
+            <Col lg={4}>
+              <EventTypeSelectContainer />
+              </Col>
+            <Col lg={4}>  
             <EventSelectContainer />
           </Col>
         </Row>
