@@ -23,6 +23,7 @@ class LFStatsNavbar extends Component {
             <LinkContainer to={'/penalties'}><NavItem>Penalties</NavItem></LinkContainer>
             <LinkContainer to={'/about'}><NavItem>About SM5</NavItem></LinkContainer>
             <LinkContainer to={'/twitch'}><NavItem>Twitch</NavItem></LinkContainer>
+            <LinkContainer to={'/upload'}><NavItem>Upload PDFs</NavItem></LinkContainer>
           </Nav>
           <Nav pullRight>
           </Nav>

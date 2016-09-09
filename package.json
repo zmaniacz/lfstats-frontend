@@ -11,6 +11,7 @@
   "license": "ISC",
   "repository": "https://github.com/zmaniacz/lfstats-frontend",
   "dependencies": {
+    "dropzone": "^4.3.0",
     "lodash": "^4.14.1",
     "react": "^15",
     "react-addons-shallow-compare": "^15.0.2",

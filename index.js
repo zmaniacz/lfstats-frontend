@@ -17,6 +17,7 @@ import EventListContainer from './containers/EventListContainer';
 import PenaltyContainer from './containers/PenaltyContainer';
 import PlayerContainer from './containers/PlayerContainer';
 import TwitchContainer from './containers/TwitchContainer';
+import UploadContainer from './containers/UploadContainer';
 
 const store = configureStore();
 
@@ -37,6 +38,7 @@ ReactDOM.render((
           <Route path="/penalties" component={PenaltyContainer} />
           <Route path="/players" component={PlayerContainer} />
           <Route path="/twitch" component={TwitchContainer} />
+          <Route path="/upload" component={UploadContainer} />
         </Route>
       </Route>
     </Router>
