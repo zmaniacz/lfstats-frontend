@@ -4,7 +4,7 @@ import * as ActionTypes from '../actions'
 import GameList from '../components/GameList'
 
 const GameListContainer = React.createClass({
-  componentDidMount() {
+  componentWillMount() {
     const { dispatch, fetchGameList } = this.props
     dispatch(ActionTypes.fetchGameListIfNeeded())
   },

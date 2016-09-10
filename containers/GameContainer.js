@@ -5,7 +5,7 @@ import GameViewContainer from './GameViewContainer';
 class GameContainer extends Component {
   render() {
     return (
-      this.props.params.gameId ? <GameViewContainer gameId={this.props.params.gameId} /> : <GameListContainer />
+      this.props.params.id ? <GameViewContainer gameId={this.props.params.id} /> : <GameListContainer />
     );
   }
 }

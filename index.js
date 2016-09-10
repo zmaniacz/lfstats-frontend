@@ -14,6 +14,7 @@ import CenterContainer from './containers/CenterContainer';
 import GameContainer from './containers/GameContainer';
 import LeaderBoardContainer from './containers/LeaderBoardContainer';
 import EventListContainer from './containers/EventListContainer';
+import EventContainer from './containers/EventContainer';
 import PenaltyContainer from './containers/PenaltyContainer';
 import PlayerContainer from './containers/PlayerContainer';
 import TwitchContainer from './containers/TwitchContainer';
@@ -30,11 +31,11 @@ ReactDOM.render((
           <Route path="/about" component={AboutContainer} />
           <Route path="/allcenter" component={AllCenterTeamContainer} />
           <Route path="/centers" component={CenterContainer} />
-          <Route path="/games" component={GameContainer}>
-            <Route path="/games/:gameId" component={GameContainer} />
-          </Route>
+          <Route path="/games" component={GameContainer} />
+          <Route path="/games/:id" component={GameContainer} />
           <Route path="/leaderboards" component={LeaderBoardContainer} />
-          <Route path="/events/" component={EventListContainer} />
+          <Route path="/events" component={EventContainer} />
+          <Route path="/events/:id" component={EventContainer} />
           <Route path="/penalties" component={PenaltyContainer} />
           <Route path="/players" component={PlayerContainer} />
           <Route path="/twitch" component={TwitchContainer} />

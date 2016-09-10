@@ -10,7 +10,7 @@ const GameViewContainer = React.createClass({
       loaded: false
     };
   },
-  componentDidMount: function () {
+  componentWillMount: function () {
     this.serverRequest = Request
       .get(Config.serverUrl+'games/'+this.props.gameId+'?include=teams.scorecards')
       .end(function(err, res) {
