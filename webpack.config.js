@@ -8,7 +8,7 @@ module.exports = {
   output: {
     filename: 'bundle.js'
   },
-  devtool: 'source-map',
+  devtool: 'eval',
   module: {
     loaders: [
       {
@@ -23,5 +23,12 @@ module.exports = {
         loader: "style-loader!css-loader"
       }
     ]
+  },
+  externals: {
+    'Config': JSON.stringify(process.env.ENV === 'production' ? {
+      serverUrl: "http://lfstats.com/api/"
+    } : {
+      serverUrl: "http://lfstats.app/api/"
+    })
   }
 };
