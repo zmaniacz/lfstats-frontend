@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import Request from 'superagent';
+import Config from 'Config';
 import GameView from '../components/GameView'
 
 const GameViewContainer = React.createClass({
@@ -11,7 +12,7 @@ const GameViewContainer = React.createClass({
   },
   componentDidMount: function () {
     this.serverRequest = Request
-      .get('http://lfstats.app/api/games/'+this.props.gameId+'?include=teams.scorecards')
+      .get(Config.serverUrl+'games/'+this.props.gameId+'?include=teams.scorecards')
       .end(function(err, res) {
         this.setState({
           data: res.body.data,

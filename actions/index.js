@@ -1,4 +1,5 @@
 import Request from 'superagent';
+import Config from 'Config';
 
 export const SET_CENTER_FILTER = 'SET_CENTER_FILTER'
 export const SET_EVENT_TYPE_FILTER = 'SET_EVENT_TYPE_FILTER'
@@ -58,7 +59,7 @@ function receiveCenterList(json) {
 export function fetchCenterList() {
   return function(dispatch) {
     dispatch(requestCenterList())
-    return Request.get('http://lfstats.app/api/centers')
+    return Request.get(Config.serverUrl+'centers')
       .end(function (error, response) {
         dispatch(receiveCenterList(response.body))
       })
@@ -108,7 +109,7 @@ function receiveEventList(json) {
 export function fetchEventList() {
   return function(dispatch) {
     dispatch(requestEventList())
-    return Request.get('http://lfstats.app/api/events')
+    return Request.get(Config.serverUrl+'events')
       .end(function (error, response) {
         dispatch(receiveEventList(response.body))
       })
@@ -158,7 +159,7 @@ function receiveGameList(json) {
 function fetchGameList() {
   return function(dispatch) {
     dispatch(requestGameList())
-    return Request.get('http://lfstats.app/api/games/?include=event,center')
+    return Request.get(Config.serverUrl+'games/?include=event,center')
       .end(function(error, response) {
         dispatch(receiveGameList(response.body))
       })
