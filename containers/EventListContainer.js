@@ -5,7 +5,7 @@ import EventList from '../components/EventList'
 
 class EventListContainer extends Component {
   componentDidMount() {
-    const { dispatch, fetchEventList } = this.props
+    const { dispatch } = this.props
     dispatch(ActionTypes.fetchEventListIfNeeded())
   }
   
