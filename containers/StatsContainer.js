@@ -12,18 +12,18 @@ class StatsContainer extends Component {
     dispatch(fetchCenterListIfNeeded())
     dispatch(fetchEventListIfNeeded())
   }
-  
+
   render() {
     return (
       <div>
         <Row>
           <Col lg={4}>
+            <EventTypeSelectContainer />
+          </Col>
+          <Col lg={4}>
             <CenterSelectContainer />
-            </Col>
-            <Col lg={4}>
-              <EventTypeSelectContainer />
-              </Col>
-            <Col lg={4}>  
+          </Col>
+          <Col lg={4}>
             <EventSelectContainer />
           </Col>
         </Row>

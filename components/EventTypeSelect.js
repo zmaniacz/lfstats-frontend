@@ -8,9 +8,9 @@ const EventTypeSelect = ({selectedEventType, onChange}) => {
           <label htmlFor="eventTypeSelect">Event Type</label>
           <select className="form-control" id="eventTypeSelect" onChange={e => onChange(e.target.value) } value={selectedEventType}>
             <option value={SHOW_ALL}>All</option>
-            <option value={SHOW_SOCIAL_EVENTS}>All Social</option>
-            <option value={SHOW_LEAGUE_EVENTS}>All League</option>
-            <option value={SHOW_TOURNAMENT_EVENTS}>All Tournament</option>
+            <option value={SHOW_SOCIAL_EVENTS}>Social</option>
+            <option value={SHOW_LEAGUE_EVENTS}>League</option>
+            <option value={SHOW_TOURNAMENT_EVENTS}>Tournament</option>
           </select>
         </div>
       </form>  
