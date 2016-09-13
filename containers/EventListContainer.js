@@ -52,7 +52,7 @@ class EventListContainer extends Component {
           break;
       }
       
-      var output = <EventList events={filteredEvents} header={header} />
+      var output = <EventList events={filteredEvents} header={header} compact={this.props.compact}/>
     }
     return (
       <div>
@@ -66,14 +66,16 @@ EventListContainer.propTypes = {
   limit: PropTypes.number,
   type: PropTypes.oneOf([ActionTypes.SHOW_ALL, ActionTypes.SHOW_SOCIAL_EVENTS, ActionTypes.SHOW_LEAGUE_EVENTS, ActionTypes.SHOW_TOURNAMENT_EVENTS]),
   sort_by: PropTypes.string,
-  sort_order: PropTypes.oneOf(['ASC', 'DESC'])
+  sort_order: PropTypes.oneOf(['ASC', 'DESC']),
+  compact: PropTypes.bool,
 }
 
 EventListContainer.defaultProps = {
   limit: 5,
   type: ActionTypes.SHOW_SOCIAL_EVENTS,
   sort_by: 'last_game_time',
-  sort_order: 'DESC'
+  sort_order: 'DESC',
+  compact: false
 }
 
 const mapStateToProps = (state) => {
