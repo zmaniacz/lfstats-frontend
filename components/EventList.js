@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Button } from 'react-bootstrap';
 
 class EventList extends Component {
   render() {
@@ -20,8 +22,8 @@ class EventList extends Component {
             <tbody>
               {events.map( (row, index) => (
                 <tr key={index}>
-                  <td>{row.name}</td>
-                  <td>{row.last_game_time}</td>
+                  <td><LinkContainer to={'/events/'+row.id}><Button bsStyle="info" bsSize="xsmall" block>{row.name}</Button></LinkContainer></td>
+                  <td>{(new Date(row.last_game_time)).toDateString()}</td>
                 </tr>
               ))}
             </tbody>
