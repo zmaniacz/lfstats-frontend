@@ -15,7 +15,7 @@ class EventList extends Component {
     var body = events.map((row, index) => (
       <tr key={index}>
         <td><LinkContainer to={'/events/' + row.id}><Button bsStyle="info" bsSize="xsmall" block>{_.startCase(row.name)}</Button></LinkContainer></td>
-        {(this.props.compact ? "" : <td>{row.type}</td>) }
+        {(this.props.compact ? null : <td>{_.startCase(row.type)}</td>) }
         <td>{(new Date(row.last_game_time)).toDateString() }</td>
       </tr>
     ));

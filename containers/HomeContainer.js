@@ -8,13 +8,13 @@ class HomeContainer extends Component {
     return (
       <Row>
         <Col xs={4}>
-          <EventListContainer compact type={ActionTypes.SHOW_SOCIAL_EVENTS} />
+          <EventListContainer compact limit={5} type={ActionTypes.SHOW_SOCIAL_EVENTS} />
         </Col>
         <Col xs={4}>
-          <EventListContainer compact type={ActionTypes.SHOW_TOURNAMENT_EVENTS} />
+          <EventListContainer compact limit={5} type={ActionTypes.SHOW_TOURNAMENT_EVENTS} />
         </Col>
         <Col xs={4}>
-          <EventListContainer compact type={ActionTypes.SHOW_LEAGUE_EVENTS} />
+          <EventListContainer compact limit={5} type={ActionTypes.SHOW_LEAGUE_EVENTS} />
         </Col>
       </Row>
     );

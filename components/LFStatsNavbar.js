@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { IndexLink } from 'react-router';
 import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
@@ -8,13 +9,13 @@ class LFStatsNavbar extends Component {
       <Navbar fixedTop>
         <Navbar.Header>
           <Navbar.Brand>
-            LFStats
+            <IndexLink to={'/'}>LFStats</IndexLink>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <IndexLinkContainer to={'/'}><NavItem>Events</NavItem></IndexLinkContainer>
+            <LinkContainer to={'/events'}><NavItem>Events</NavItem></LinkContainer>
             <LinkContainer to={'/players'}><NavItem>Top Players</NavItem></LinkContainer>
             <LinkContainer to={'/games'}><NavItem>Game List</NavItem></LinkContainer>
             <LinkContainer to={'/leaderboards'}><NavItem>Leader(Loser)boards</NavItem></LinkContainer>

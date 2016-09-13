@@ -34,7 +34,9 @@ class EventListContainer extends Component {
         return new Date(b.last_game_time) - new Date(a.last_game_time);
       })
       
-      filteredEvents = filteredEvents.slice(0,this.props.limit)
+      if (this.props.limit) {
+        filteredEvents = filteredEvents.slice(0, this.props.limit)
+      }
       
       var header = ""
       switch(this.props.type) {
@@ -71,7 +73,7 @@ EventListContainer.propTypes = {
 }
 
 EventListContainer.defaultProps = {
-  limit: 5,
+  limit: null,
   type: ActionTypes.SHOW_SOCIAL_EVENTS,
   sort_by: 'last_game_time',
   sort_order: 'DESC',
