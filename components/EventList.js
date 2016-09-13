@@ -1,42 +1,86 @@
 import React, {Component} from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Button } from 'react-bootstrap';
+import { AutoSizer, FlexTable, FlexColumn } from 'react-virtualized';
 
 class EventList extends Component {
-  render() {
-    const events = this.props.events;
+  constructor(props) {
+    super(props);
 
-    if (this.props.compact) {
-      var head =  <tr><th>Event</th><th>Last Game Played</th></tr>
-    } else {
-      var head =  <tr><th>Event</th><th>Type</th><th>Last Game Played</th></tr>
+    this.state = {
+      sortBy: 'last_game_time',
+      sortDirection: 'DESC'
     }
 
-    var body = events.map((row, index) => (
-      <tr key={index}>
-        <td><LinkContainer to={'/events/' + row.id}><Button bsStyle="info" bsSize="xsmall" block>{_.startCase(row.name)}</Button></LinkContainer></td>
-        {(this.props.compact ? null : <td>{_.startCase(row.type)}</td>) }
-        <td>{(new Date(row.last_game_time)).toDateString() }</td>
-      </tr>
-    ));
-    
+    this._sort = this._sort.bind(this)
+  }
+
+  render() {
+    const { sortBy, sortDirection } = this.state
+
+    let events = this.props.events;
+
+    events = _.sortBy(events, sortBy)
+
+    if (sortDirection == 'DESC')
+      _.reverse(events)
+
+    const rowStyle = {
+      borderBottom: '1px solid #e0e0e0'
+    }
+
     return (
-      <div className="panel panel-primary">
-        <div className="panel-heading">
-          <h3 className="panel-title">{this.props.header}</h3>
-        </div>
-        <div className="panel-body">
-          <table className="table table-striped table-condensed table-hover table-bordered">
-            <thead>
-              {head}
-            </thead>
-            <tbody>
-              {body}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <AutoSizer disableHeight>
+        { ({ width }) => (
+          <FlexTable
+            width={width}
+            height={500}
+            rowCount={events.length}
+            headerHeight={20}
+            rowHeight={40}
+            rowGetter={ ({index}) => events[index]}
+            rowStyle={ rowStyle }
+            sort={this._sort}
+            sortBy={sortBy}
+            sortDirection={sortDirection}
+            >
+            <FlexColumn
+              label='Event'
+              dataKey='name'
+              width={width / 3}
+              cellRenderer={
+                ({ cellData, columnData, dataKey, rowData, rowIndex }) => {
+                  return (
+                    <LinkContainer to={`/events/${rowData.id}`}>
+                      <Button block bsStyle="info">{_.startCase(cellData) }</Button>
+                    </LinkContainer>
+                  );
+                }
+              }
+              />
+            {!this.props.compact ?
+              <FlexColumn
+                label='Type'
+                dataKey='type'
+                width={width / 3}
+                />
+              :
+              null
+            }
+
+            <FlexColumn
+              label='Last Played'
+              dataKey='last_game_time'
+              width={width / 3}
+              />
+          </FlexTable>
+        ) }
+      </AutoSizer>
     );
+  }
+
+  _sort({ sortBy, sortDirection }) {
+    this.setState({ sortBy, sortDirection })
   }
 }
 

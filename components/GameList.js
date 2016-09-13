@@ -1,5 +1,6 @@
-import React, {Component,PropTypes} from 'react';
-import {Link} from 'react-router';
+import React, {Component, PropTypes} from 'react';
+import { Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import { AutoSizer, FlexTable, FlexColumn } from 'react-virtualized';
 
 class GameList extends Component {
@@ -50,9 +51,9 @@ class GameList extends Component {
               cellRenderer={
                 ({ cellData, columnData, dataKey, rowData, rowIndex }) => {
                   return (
-                    <Link to={`/games/${rowData.id}`} className={rowData.winner == 'red' ? "btn btn-danger btn-block" : "btn btn-success btn-block"} href="#">
-                      {cellData === null ? "Game " + rowData.id : cellData}
-                    </Link>
+                    <LinkContainer to={`/games/${rowData.id}`}>
+                      <Button block bsStyle={rowData.winner == 'red' ? "danger" : "success"}>{cellData === null ? "Game " + rowData.id : cellData}</Button>
+                    </LinkContainer>
                   );
                 }
               }
