@@ -1,7 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux'
 import * as ActionTypes from '../actions'
-import EventList from '../components/EventList'
+import EventList from '../components/EventList';
+import CompactEventList from '../components/CompactEventList';
 
 class EventListContainer extends Component {
   componentDidMount() {
@@ -38,23 +39,11 @@ class EventListContainer extends Component {
         filteredEvents = filteredEvents.slice(0, this.props.limit)
       }
       
-      var header = ""
-      switch(this.props.type) {
-        case ActionTypes.SHOW_LEAGUE_EVENTS:
-          header = "Recent Leagues"
-          break;
-        case ActionTypes.SHOW_SOCIAL_EVENTS:
-          header = "Recent Social Events"
-          break;
-        case ActionTypes.SHOW_TOURNAMENT_EVENTS:
-          header = "Recent Tournaments"
-          break;
-        case ActionTypes.SHOW_ALL:
-          header = "Recent Events"
-          break;
+      if (this.props.compact) {
+        var output = <CompactEventList events={filteredEvents} header={this.props.header} />
+      } else {
+        var output = <EventList events={filteredEvents} header={this.props.header} />
       }
-      
-      var output = <EventList events={filteredEvents} header={header} compact={this.props.compact}/>
     }
     return (
       <div>
@@ -70,6 +59,7 @@ EventListContainer.propTypes = {
   sort_by: PropTypes.string,
   sort_order: PropTypes.oneOf(['ASC', 'DESC']),
   compact: PropTypes.bool,
+  header: PropTypes.string,
 }
 
 EventListContainer.defaultProps = {
@@ -77,7 +67,8 @@ EventListContainer.defaultProps = {
   type: ActionTypes.SHOW_SOCIAL_EVENTS,
   sort_by: 'last_game_time',
   sort_order: 'DESC',
-  compact: false
+  compact: false,
+  header: 'Events',
 }
 
 const mapStateToProps = (state) => {

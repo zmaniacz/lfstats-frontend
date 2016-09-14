@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Button } from 'react-bootstrap';
+import { Button, Panel } from 'react-bootstrap';
 import { AutoSizer, FlexTable, FlexColumn } from 'react-virtualized';
 
 class EventList extends Component {
@@ -30,52 +30,49 @@ class EventList extends Component {
     }
 
     return (
-      <AutoSizer disableHeight>
-        { ({ width }) => (
-          <FlexTable
-            width={width}
-            height={500}
-            rowCount={events.length}
-            headerHeight={20}
-            rowHeight={40}
-            rowGetter={ ({index}) => events[index]}
-            rowStyle={ rowStyle }
-            sort={this._sort}
-            sortBy={sortBy}
-            sortDirection={sortDirection}
-            >
-            <FlexColumn
-              label='Event'
-              dataKey='name'
-              width={width / 3}
-              cellRenderer={
-                ({ cellData, columnData, dataKey, rowData, rowIndex }) => {
-                  return (
-                    <LinkContainer to={`/events/${rowData.id}`}>
-                      <Button block bsStyle="info">{_.startCase(cellData) }</Button>
-                    </LinkContainer>
-                  );
+      <Panel bsStyle="primary" header={this.props.header}>
+        <AutoSizer disableHeight>
+          { ({ width }) => (
+            <FlexTable
+              width={width}
+              height={500}
+              rowCount={events.length}
+              headerHeight={20}
+              rowHeight={40}
+              rowGetter={ ({index}) => events[index]}
+              rowStyle={ rowStyle }
+              sort={this._sort}
+              sortBy={sortBy}
+              sortDirection={sortDirection}
+              >
+              <FlexColumn
+                label='Event'
+                dataKey='name'
+                width={width / 3}
+                cellRenderer={
+                  ({ cellData, columnData, dataKey, rowData, rowIndex }) => {
+                    return (
+                      <LinkContainer to={`/events/${rowData.id}`}>
+                        <Button block bsStyle="info">{_.startCase(cellData) }</Button>
+                      </LinkContainer>
+                    );
+                  }
                 }
-              }
-              />
-            {!this.props.compact ?
+                />
               <FlexColumn
                 label='Type'
                 dataKey='type'
                 width={width / 3}
                 />
-              :
-              null
-            }
-
-            <FlexColumn
-              label='Last Played'
-              dataKey='last_game_time'
-              width={width / 3}
-              />
-          </FlexTable>
-        ) }
-      </AutoSizer>
+              <FlexColumn
+                label='Last Played'
+                dataKey='last_game_time'
+                width={width / 3}
+                />
+            </FlexTable>
+          ) }
+        </AutoSizer>
+      </Panel>
     );
   }
 
