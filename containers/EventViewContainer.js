@@ -12,7 +12,7 @@ class EventViewContainer extends Component {
     }
   }
   
-  componentWillMount() {
+  componentDidMount() {
      this.serverRequest = Request
       .get(Config.serverUrl+'events/'+this.props.eventId)
       .end(function(err, res) {
