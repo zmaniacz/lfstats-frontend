@@ -5,7 +5,7 @@ import GameList from '../components/GameList'
 
 const GameListContainer = React.createClass({
   componentDidMount() {
-    const { dispatch, fetchGameList } = this.props
+    const { dispatch } = this.props
     dispatch(ActionTypes.fetchGameListIfNeeded())
   },
   render () {
