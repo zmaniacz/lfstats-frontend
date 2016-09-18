@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import { Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { AutoSizer, FlexTable, FlexColumn } from 'react-virtualized';
+import { AutoSizer, Table, Column } from 'react-virtualized';
 
 class GameList extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class GameList extends Component {
     return (
       <AutoSizer disableHeight>
         { ({ width }) => (
-          <FlexTable
+          <Table
             width={width}
             height={500}
             rowCount={games.length}
@@ -44,7 +44,7 @@ class GameList extends Component {
             sortBy={sortBy}
             sortDirection={sortDirection}
           >
-            <FlexColumn
+            <Column
               label='Game'
               dataKey='name'
               width={width/5}
@@ -58,27 +58,27 @@ class GameList extends Component {
                 }
               }
             />
-            <FlexColumn
+            <Column
               label='Time'
               dataKey='played_at'
               width={width/5}
             />
-            <FlexColumn
+            <Column
               label='Red Score'
               dataKey='red_score'
               width={width/5}
             />
-            <FlexColumn
+            <Column
               label='Green Score'
               dataKey='green_score'
               width={width/5}
             />
-            <FlexColumn
+            <Column
               label='PDF'
               dataKey='pdf'
               width={width/5}
             />
-          </FlexTable>
+          </Table>
         )}
       </AutoSizer>
     );
